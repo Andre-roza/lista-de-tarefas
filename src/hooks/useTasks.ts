@@ -20,6 +20,19 @@ function fromDb(row: Record<string, unknown>): Task {
   }
 }
 
+function toDb(task: Partial<Task>) {
+  const db: Record<string, unknown> = {}
+  if (task.id !== undefined) db.id = task.id
+  if (task.title !== undefined) db.title = task.title
+  if (task.description) db.description = task.description
+  if (task.category !== undefined) db.category = task.category
+  if (task.priority !== undefined) db.priority = task.priority
+  if (task.dueDate !== undefined) db.due_date = task.dueDate
+  if (task.completed !== undefined) db.completed = task.completed
+  if (task.createdAt !== undefined) db.created_at = task.createdAt
+  return db
+}
+
 export function useTasks() {
   const [tasks, setTasks] = useState<Task[]>([])
   const [loaded, setLoaded] = useState(false)
@@ -58,16 +71,7 @@ export function useTasks() {
     // Otimista: adiciona no estado imediatamente
     setTasks(prev => [newTask, ...prev])
 
-    const { error } = await supabase.from('tasks').insert({
-      id: newTask.id,
-      title: newTask.title,
-      description: newTask.description,
-      category: newTask.category,
-      priority: newTask.priority,
-      due_date: newTask.dueDate,
-      completed: newTask.completed,
-      created_at: newTask.createdAt,
-    })
+    const { error } = await supabase.from('tasks').insert(toDb(newTask))
 
     if (error) {
       // Reverte em caso de erro
@@ -127,16 +131,9 @@ export function useTasks() {
 
     setTasks(prev => prev.map(t => t.id === id ? updated : t))
 
-    const dbData: Record<string, unknown> = {}
-    if (data.title !== undefined) dbData.title = data.title
-    if (data.description !== undefined) dbData.description = data.description
-    if (data.category !== undefined) dbData.category = data.category
-    if (data.priority !== undefined) dbData.priority = data.priority
-    if (data.dueDate !== undefined) dbData.due_date = data.dueDate
-
     const { error } = await supabase
       .from('tasks')
-      .update(dbData)
+      .update(toDb(data as Partial<Task>))
       .eq('id', id)
 
     if (error) {

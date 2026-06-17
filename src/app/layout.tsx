@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="pt-BR" className="dark">
       <body className="min-h-screen antialiased">
         <Navbar />
-        <main className="max-w-5xl mx-auto px-4 py-6 pt-20">
+        <main className="max-w-5xl mx-auto px-3 sm:px-4 py-4 sm:py-6 pt-16 sm:pt-20">
           {children}
         </main>
       </body>

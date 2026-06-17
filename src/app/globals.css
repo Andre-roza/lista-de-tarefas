@@ -37,3 +37,11 @@ body {
   background: #2A2A4A;
   border-radius: 3px;
 }
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

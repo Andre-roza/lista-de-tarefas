@@ -18,20 +18,20 @@ const filters: { value: Filter; label: string }[] = [
 
 export default function TaskFilters({ current, onChange, counts }: TaskFiltersProps) {
   return (
-    <div className="flex gap-1 p-1 bg-purple-card/50 rounded-xl border border-purple-border">
+    <div className="flex gap-1 p-1 bg-purple-card/50 rounded-xl border border-purple-border overflow-x-auto scrollbar-none">
       {filters.map(f => (
         <button
           key={f.value}
           onClick={() => onChange(f.value)}
           className={cn(
-            'flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer',
+            'flex items-center gap-1.5 px-3 sm:px-4 py-2.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 cursor-pointer whitespace-nowrap flex-1 sm:flex-none',
             current === f.value
               ? 'bg-gradient-to-r from-accent-from to-accent-to text-white shadow-lg shadow-accent/25'
               : 'text-purple-muted hover:text-purple-light'
           )}
         >
           {f.label}
-          <span className="text-xs opacity-70">({counts[f.value]})</span>
+          <span className="text-[10px] sm:text-xs opacity-70">({counts[f.value]})</span>
         </button>
       ))}
     </div>

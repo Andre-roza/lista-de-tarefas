@@ -32,15 +32,15 @@ export default function TaskForm({ onAdd }: TaskFormProps) {
 
   if (!open) {
     return (
-      <Button variant="primary" onClick={() => setOpen(true)} className="w-full">
-        <Plus size={18} />
+      <Button variant="primary" onClick={() => setOpen(true)} size="lg" className="w-full">
+        <Plus size={20} />
         Nova Tarefa
       </Button>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="p-5 rounded-2xl bg-purple-card border border-purple-border shadow-xl shadow-black/10 space-y-4">
+    <form onSubmit={handleSubmit} className="p-4 sm:p-5 rounded-2xl bg-purple-card border border-purple-border shadow-xl shadow-black/10 space-y-3 sm:space-y-4">
       <Input
         id="title"
         placeholder="O que você precisa fazer?"
@@ -48,7 +48,7 @@ export default function TaskForm({ onAdd }: TaskFormProps) {
         onChange={e => setTitle(e.target.value)}
         autoFocus
       />
-      <div className="grid grid-cols-3 gap-3">
+      <div className="grid grid-cols-3 gap-2 sm:gap-3">
         <Select
           id="category"
           label="Categoria"
@@ -72,10 +72,10 @@ export default function TaskForm({ onAdd }: TaskFormProps) {
         />
       </div>
       <div className="flex justify-end gap-2 pt-1">
-        <Button type="button" variant="ghost" onClick={() => setOpen(false)}>
+        <Button type="button" variant="ghost" onClick={() => setOpen(false)} size="lg" className="flex-1 sm:flex-none">
           Cancelar
         </Button>
-        <Button type="submit" variant="primary">
+        <Button type="submit" variant="primary" size="lg" className="flex-1 sm:flex-none">
           Adicionar
         </Button>
       </div>

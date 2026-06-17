@@ -2,10 +2,6 @@
 
 Aplicativo moderno de gerenciamento de tarefas com tema escuro, desenvolvido com **Next.js 16** (App Router), **Supabase** (Auth + Database) e **Tailwind CSS 4.1**.
 
-> Repositório: [github.com/Andre-roza/lista-de-tarefas](https://github.com/Andre-roza/lista-de-tarefas)
-
----
-
 ## Funcionalidades
 
 ### Autenticação

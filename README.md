@@ -209,9 +209,3 @@ Ative **Row Level Security (RLS)** com políticas para leitura/escrita apenas do
    - Filtra por Todas/Hoje/Pendentes/Concluídas
 5. Navega para **Análises** (`/analises`) para métricas e gráficos
 6. Navega para **Calendário** (`/calendario`) para visão mensal
-
----
-
-## Licença
-
-Privado — uso pessoal.

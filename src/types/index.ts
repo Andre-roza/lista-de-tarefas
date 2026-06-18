@@ -11,4 +11,5 @@ export interface Task {
   dueDate: string
   completed: boolean
   createdAt: string
+  userId: string
 }
